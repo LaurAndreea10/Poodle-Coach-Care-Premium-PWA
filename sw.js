@@ -1,5 +1,5 @@
 const CACHE="poodle-coach-v9";
-const ASSETS=["./","index.html","style.css","script.js","onboarding.js","v9.css","v9-core.js","v9-health.js","v9-training.js","v9-ux.js","manifest.json","icon-192.png","icon-512.png","poodle-logo.png"];
+const ASSETS=["./","index.html","style.css","script.js","onboarding.js","v9.css","v9-core.js","v9-langs.js","v9-health.js","v9-training.js","v9-ux.js","manifest.json","icon-192.png","icon-512.png","poodle-logo.png"];
 self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 function idbPut(file){return new Promise((resolve,reject)=>{const r=indexedDB.open("poodle-share",1);r.onupgradeneeded=()=>r.result.createObjectStore("files");r.onerror=()=>reject(r.error);r.onsuccess=()=>{const db=r.result,tx=db.transaction("files","readwrite");tx.objectStore("files").put(file,"latest");tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error)}})}
