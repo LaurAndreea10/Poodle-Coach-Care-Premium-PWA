@@ -1,0 +1,31 @@
+/* v12 accessibility: keyboard, low vision, motor and reduced-motion support */
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.skip-link{position:fixed;left:12px;top:10px;z-index:100000;transform:translateY(-180%);background:#111;color:#fff;padding:12px 16px;border-radius:10px;font-weight:800;text-decoration:none;box-shadow:0 8px 30px rgba(0,0,0,.28)}
+.skip-link:focus{transform:translateY(0)}
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid #146cff!important;outline-offset:3px!important;box-shadow:0 0 0 2px Canvas!important}
+button,[role="button"],a,input,select,textarea{touch-action:manipulation}
+#a11yFab{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:9000;min-height:48px;border:2px solid var(--primary);background:var(--surface);color:var(--text);border-radius:999px;padding:10px 15px;font-weight:800;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+#a11yDialog{width:min(680px,calc(100vw - 24px));max-height:min(84vh,760px);overflow:auto;border:1px solid var(--line);border-radius:22px;background:var(--surface);color:var(--text);padding:0;box-shadow:0 28px 80px rgba(0,0,0,.35)}
+#a11yDialog::backdrop{background:rgba(0,0,0,.55);backdrop-filter:blur(3px)}
+.a11y-head{position:sticky;top:0;z-index:2;display:flex;align-items:flex-start;justify-content:space-between;gap:14px;background:var(--surface);padding:20px;border-bottom:1px solid var(--line)}
+.a11y-head h2{margin:3px 0 0}.a11y-head p{margin:5px 0 0;color:var(--muted)}
+.a11y-close{min-width:44px;min-height:44px;border:1px solid var(--line);border-radius:12px;background:var(--soft);color:var(--text);font-size:20px}
+.a11y-body{padding:20px;display:grid;gap:18px}.a11y-group{display:grid;gap:10px}.a11y-group h3{margin:0;font-size:1rem}
+.a11y-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.a11y-toggle{display:flex;align-items:center;gap:12px;min-height:58px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--soft);color:var(--text);text-align:left;cursor:pointer}
+.a11y-toggle input{width:22px;height:22px;flex:0 0 auto;accent-color:var(--primary)}.a11y-toggle span{display:grid;gap:2px}.a11y-toggle small{color:var(--muted);line-height:1.35}
+.a11y-actions{display:flex;flex-wrap:wrap;gap:9px}.a11y-actions button{min-height:46px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:var(--soft);color:var(--text);font-weight:700}
+.a11y-font-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.a11y-font-controls button{min-width:48px;min-height:46px;border:1px solid var(--line);border-radius:12px;background:var(--soft);color:var(--text);font-weight:800}.a11y-font-controls output{min-width:72px;text-align:center;font-weight:800}
+html.a11y-font-large{font-size:112.5%}html.a11y-font-xlarge{font-size:125%}
+html.a11y-readable body{font-family:Arial,Verdana,Tahoma,sans-serif!important;letter-spacing:.02em;word-spacing:.08em;line-height:1.65}html.a11y-readable p,html.a11y-readable small,html.a11y-readable label{line-height:1.65}
+html.a11y-links a{text-decoration:underline!important;text-decoration-thickness:2px!important;text-underline-offset:3px!important}
+html.a11y-targets button,html.a11y-targets [role="button"],html.a11y-targets input:not([type="checkbox"]):not([type="radio"]),html.a11y-targets select{min-height:48px!important}html.a11y-targets .tiny-btn,html.a11y-targets .icon-btn{min-width:48px!important;min-height:48px!important}
+html.a11y-contrast{--text:#000!important;--muted:#222!important;--surface:#fff!important;--soft:#f2f2f2!important;--line:#222!important;--primary:#0037ff!important;--primary2:#0037ff!important;background:#fff!important}html.a11y-contrast body{background:#fff!important;color:#000!important}html.a11y-contrast .primary-btn{background:#0037ff!important;color:#fff!important;border:2px solid #000!important}html.a11y-contrast .secondary-btn,html.a11y-contrast .soft-btn,html.a11y-contrast button:not(.primary-btn){border-color:#111!important}html.a11y-contrast .muted{opacity:.75!important}
+html.a11y-dark-contrast{--text:#fff!important;--muted:#f1f1f1!important;--surface:#050505!important;--soft:#171717!important;--line:#eee!important;--primary:#ffde00!important;--primary2:#ffde00!important;background:#000!important}html.a11y-dark-contrast body{background:#000!important;color:#fff!important}html.a11y-dark-contrast .primary-btn{background:#ffde00!important;color:#000!important;border:2px solid #fff!important}
+html.a11y-reduce-motion *,html.a11y-reduce-motion *::before,html.a11y-reduce-motion *::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+html.a11y-no-transparency *,html.a11y-no-transparency *::before,html.a11y-no-transparency *::after{backdrop-filter:none!important}html.a11y-no-transparency dialog::backdrop{backdrop-filter:none!important;background:rgba(0,0,0,.82)!important}
+html.a11y-spacing p,html.a11y-spacing li,html.a11y-spacing label,html.a11y-spacing small{line-height:1.75!important}html.a11y-spacing p{margin-block:.75em!important}
+html.a11y-hide-images img:not([data-essential-image]){visibility:hidden!important}html.a11y-hide-images img:not([data-essential-image])::after{content:attr(alt)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
+@media(forced-colors:active){:where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:3px solid Highlight!important}.skill-levels i.on{forced-color-adjust:none;background:Highlight!important}.primary-btn{border:2px solid ButtonText!important}}
+@media(max-width:620px){.a11y-grid{grid-template-columns:1fr}#a11yFab{font-size:0;width:52px;height:52px;padding:0}#a11yFab::before{content:'♿';font-size:24px}}
