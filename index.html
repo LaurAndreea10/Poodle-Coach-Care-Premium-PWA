@@ -6,15 +6,16 @@
   <meta name="theme-color" content="#8b5f4d">
   <meta name="description" content="Poodle Coach & Care Premium — training, health, food, grooming and care tracker.">
   <link rel="manifest" href="manifest.json">
-  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="icon" href="icon-192.png?v=7" type="image/png">
+  <link rel="apple-touch-icon" href="icon-192.png?v=7">
   <title>Poodle Coach & Care Premium</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
   <div class="app">
     <aside class="sidebar" id="sidebar">
       <div class="brand">
-        <div class="brand-mark">🐩</div>
+        <div class="brand-mark"><img src="poodle-logo.png?v=7" alt="Poodle Coach"></div>
         <div><strong>Poodle Coach</strong><span>Care Premium</span></div>
       </div>
 
@@ -258,7 +259,7 @@
         <section class="page" id="page-profile">
           <div class="section-head"><div><span class="eyebrow">Pet Profile</span><h2 data-i18n="profile.title">Profil</h2></div></div>
           <div class="profile-grid">
-            <article class="profile-card"><div class="big-poodle">🐩</div><h3 id="profileName">Kygo</h3><p id="profileMeta">Poodle Toy</p><span class="chip">Premium Pup</span></article>
+            <article class="profile-card"><div class="big-poodle"><img src="poodle-logo.png?v=7" alt="" aria-hidden="true"></div><h3 id="profileName">Kygo</h3><p id="profileMeta">Poodle Toy</p><span class="chip">Premium Pup</span></article>
             <article class="panel">
               <div class="form-grid">
                 <label>Nume<input id="profileNameInput"></label>
@@ -299,7 +300,68 @@
     </div>
   </div>
 
+  <!-- ONBOARDING -->
+  <div class="onboarding" id="onboarding" aria-modal="true" role="dialog">
+    <div class="ob-card">
+      <div class="ob-progress" id="obProgress"><i class="on"></i><i></i><i></i><i></i></div>
+
+      <!-- Step 1: Language -->
+      <div class="ob-step active" data-ob-step="0">
+        <div class="ob-mark"><img src="poodle-logo.png?v=7" alt="Poodle Coach"></div>
+        <h2>Choose your language</h2>
+        <p class="ob-sub">Alege limba în care vrei să folosești aplicația.</p>
+        <div class="ob-langs">
+          <button class="ob-lang sel" data-ob-lang="ro"><span>🇷🇴</span> Română</button>
+          <button class="ob-lang" data-ob-lang="en"><span>🇬🇧</span> English</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Dog name -->
+      <div class="ob-step" data-ob-step="1">
+        <div class="ob-mark">🐾</div>
+        <h2 data-i18n="ob.nameTitle">Cum îl cheamă pe cățel?</h2>
+        <p class="ob-sub" data-i18n="ob.nameSub">Numele apare în app și în comenzile de dresaj.</p>
+        <label class="ob-field">
+          <span data-i18n="ob.nameLabel">Numele cățelului</span>
+          <input id="obName" type="text" placeholder="ex. Kygo" maxlength="30" autocomplete="off">
+        </label>
+        <div class="ob-suggest"><button data-name-suggest="Kygo">Kygo</button><button data-name-suggest="Kiko">Kiko</button><button data-name-suggest="Kito">Kito</button></div>
+      </div>
+
+      <!-- Step 3: Details -->
+      <div class="ob-step" data-ob-step="2">
+        <div class="ob-mark">🐩</div>
+        <h2 data-i18n="ob.detailTitle">Câteva detalii (opțional)</h2>
+        <p class="ob-sub" data-i18n="ob.detailSub">Le poți schimba oricând din Profil.</p>
+        <div class="ob-grid">
+          <label class="ob-field"><span data-i18n="ob.breedLabel">Rasă</span><select id="obBreed"><option>Poodle Toy</option><option>Poodle Miniature</option><option>Poodle Toy / Miniature</option></select></label>
+          <label class="ob-field"><span data-i18n="ob.sexLabel">Sex</span><select id="obSex"><option value="Mascul">Mascul</option><option value="Femelă">Femelă</option></select></label>
+          <label class="ob-field"><span data-i18n="ob.ageLabel">Vârstă (luni)</span><input id="obAge" type="number" min="1" max="240" value="3"></label>
+          <label class="ob-field"><span data-i18n="ob.weightLabel">Greutate (kg)</span><input id="obWeight" type="number" min="0.5" max="30" step="0.1" value="2.5"></label>
+        </div>
+      </div>
+
+      <!-- Step 4: Ready -->
+      <div class="ob-step" data-ob-step="3">
+        <div class="ob-mark">🎉</div>
+        <h2 id="obReadyTitle">Totul e gata!</h2>
+        <p class="ob-sub" id="obReadySub">Planul zilnic va fi adaptat vârstei și profilului.</p>
+        <div class="care-score-card" style="margin:10px auto;max-width:280px">
+          <div class="score-ring" style="width:100px;height:100px"><span>🐩</span></div>
+          <strong id="obSummaryName">Kygo</strong>
+          <span id="obSummaryMeta">Poodle Toy · 3 luni</span>
+        </div>
+      </div>
+
+      <div class="ob-actions">
+        <button class="secondary-btn" id="obBack" style="visibility:hidden">←</button>
+        <button class="primary-btn" id="obNext">Continuă →</button>
+      </div>
+      <button class="ob-skip" id="obSkip" data-i18n="ob.skip">Sari peste</button>
+    </div>
+  </div>
+
   <div id="toast" class="toast"></div>
-  <script src="script.js"></script>
+  <script src="script.js?v=7"></script>
 </body>
 </html>
