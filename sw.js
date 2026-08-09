@@ -1,6 +1,15 @@
-const CACHE="poodle-coach-v10";
-const ASSETS=["./","index.html","style.css","script.js","onboarding.js","v9.css","v9-core.js","v9-langs.js","v9-health.js","v9-training.js","v10-training-elements.js","v9-ux.js","manifest.json","icon-192.png","icon-512.png","poodle-logo.png"];
+const CACHE="poodle-coach-v11";
+const ASSETS=["./","index.html","style.css","script.js","onboarding.js","training-premium-v11.js","v9.css","v9-core.js","v9-langs.js","v9-health.js","v9-training.js","v10-training-elements.js","v9-ux.js","manifest.json","icon-192.png","icon-512.png","poodle-logo.png"];
 self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 function idbPut(file){return new Promise((resolve,reject)=>{const r=indexedDB.open("poodle-share",1);r.onupgradeneeded=()=>r.result.createObjectStore("files");r.onerror=()=>reject(r.error);r.onsuccess=()=>{const db=r.result,tx=db.transaction("files","readwrite");tx.objectStore("files").put(file,"latest");tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error)}})}
-self.addEventListener("fetch",e=>{const u=new URL(e.request.url);if(e.request.method==="POST"&&u.pathname.endsWith("/share-target")){e.respondWith((async()=>{const form=await e.request.formData(),file=form.get("photo");if(file&&file.size)await idbPut(file);return Response.redirect(new URL("./?shared=1",self.registration.scope),303)})());return}if(e.request.method!=="GET")return;if(e.request.mode==="navigate"){e.respondWith(fetch(e.request).then(r=>{const c=r.clone();caches.open(CACHE).then(x=>x.put(e.request,c));return r}).catch(()=>caches.match("./")));return}e.respondWith(caches.match(e.request).then(cached=>{const network=fetch(e.request).then(r=>{const c=r.clone();caches.open(CACHE).then(x=>x.put(e.request,c));return r}).catch(()=>cached);return cached||network}))});
+async function injectPremiumTraining(response){
+  if(!response||!response.ok)return response;
+  const type=response.headers.get("content-type")||"";
+  if(!type.includes("text/html"))return response;
+  let html=await response.text();
+  if(!html.includes("training-premium-v11.js"))html=html.replace("</body>",'<script src="training-premium-v11.js?v=11"></script></body>');
+  const headers=new Headers(response.headers);headers.delete("content-length");
+  return new Response(html,{status:response.status,statusText:response.statusText,headers});
+}
+self.addEventListener("fetch",e=>{const u=new URL(e.request.url);if(e.request.method==="POST"&&u.pathname.endsWith("/share-target")){e.respondWith((async()=>{const form=await e.request.formData(),file=form.get("photo");if(file&&file.size)await idbPut(file);return Response.redirect(new URL("./?shared=1",self.registration.scope),303)})());return}if(e.request.method!=="GET")return;if(e.request.mode==="navigate"){e.respondWith((async()=>{try{const r=await injectPremiumTraining(await fetch(e.request));const c=r.clone();caches.open(CACHE).then(x=>x.put(e.request,c));return r}catch{const cached=await caches.match("./");return injectPremiumTraining(cached)}})());return}e.respondWith(caches.match(e.request).then(cached=>{const network=fetch(e.request).then(r=>{const c=r.clone();caches.open(CACHE).then(x=>x.put(e.request,c));return r}).catch(()=>cached);return cached||network}))});
