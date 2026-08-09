@@ -19,6 +19,7 @@ function apply(){
 }
 function set(key,val){prefs[key]=val;apply()}
 function toggle(key){set(key,!prefs[key])}
+function setText(el,text){if(el&&el.textContent!==text)el.textContent=text}
 
 function semanticPass(){
  document.documentElement.lang=(typeof lang==='function'&&lang()==='en')?'en':'ro';
@@ -46,10 +47,9 @@ function ensureUI(){
 let bound=false;
 function bindUI(){if(bound)return;bound=true;const d=q('#a11yDialog');q('#a11yFab').onclick=()=>{d.showModal();setTimeout(()=>d.querySelector('button,input')?.focus(),0)};d.querySelector('.a11y-close').onclick=()=>d.close();d.addEventListener('cancel',()=>speechSynthesis?.cancel?.());qa('[data-pref]').forEach(i=>i.onchange=()=>toggle(i.dataset.pref));qa('[data-font]').forEach(b=>b.onclick=()=>set('font',b.dataset.font));qa('[data-contrast]').forEach(b=>b.onclick=()=>set('contrast',b.dataset.contrast));q('#a11yReset').onclick=()=>{Object.assign(prefs,defaults);apply()};q('#a11yReadPage').onclick=readPage;q('#a11yStopSpeech').onclick=()=>speechSynthesis?.cancel?.();document.addEventListener('keydown',e=>{if(e.altKey&&e.key.toLowerCase()==='a'){e.preventDefault();if(d.open)d.close();else{d.showModal();setTimeout(()=>d.querySelector('button,input')?.focus(),0)}}if(e.key==='Escape'&&q('#sidebar')?.classList.contains('open'))q('#sidebar').classList.remove('open')});q('#menuBtn')?.addEventListener('click',()=>setTimeout(()=>q('#menuBtn')?.setAttribute('aria-expanded',q('#sidebar')?.classList.contains('open')?'true':'false'),0));}
 function updateControls(){qa('[data-pref]').forEach(i=>i.checked=!!prefs[i.dataset.pref]);q('#a11yFontOut')&&(q('#a11yFontOut').textContent=prefs.font==='xlarge'?'125%':prefs.font==='large'?'112%':'100%');qa('[data-font]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.font===prefs.font)));qa('[data-contrast]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.contrast===prefs.contrast)))}
-function updateLanguage(){const ro=document.documentElement.lang!=='en',d=q('#a11yDialog');if(!d)return;q('[data-a11y-title]').textContent=ro?'Accesibilitate':'Accessibility';q('[data-a11y-sub]').textContent=ro?'Personalizează aplicația pentru vedere, mobilitate, concentrare și cititoare de ecran.':'Customize the app for vision, mobility, focus and screen readers.';q('.skip-link').textContent=ro?'Sari la conținut':'Skip to content';q('#a11yFab').textContent=ro?'♿ Accesibilitate':'♿ Accessibility'}
+function updateLanguage(){const ro=document.documentElement.lang!=='en',d=q('#a11yDialog');if(!d)return;setText(q('[data-a11y-title]'),ro?'Accesibilitate':'Accessibility');setText(q('[data-a11y-sub]'),ro?'Personalizează aplicația pentru vedere, mobilitate, concentrare și cititoare de ecran.':'Customize the app for vision, mobility, focus and screen readers.');setText(q('.skip-link'),ro?'Sari la conținut':'Skip to content');setText(q('#a11yFab'),ro?'♿ Accesibilitate':'♿ Accessibility')}
 function readPage(){if(!('speechSynthesis'in window))return;const active=q('.page.active')||q('#mainContent');const text=(active?.innerText||'').replace(/\s+/g,' ').trim();if(!text)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text.slice(0,12000));u.lang=document.documentElement.lang==='en'?'en-US':'ro-RO';u.rate=.95;speechSynthesis.speak(u)}
 
 ensureUI();semanticPass();apply();
-const observer=new MutationObserver(()=>{semanticPass();updateLanguage()});observer.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
-window.addEventListener('storage',apply);
+let queued=false;const observer=new MutationObserver(()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;semanticPass();updateLanguage()})});observer.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['class']});
 })();
