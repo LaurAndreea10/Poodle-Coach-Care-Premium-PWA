@@ -1,0 +1,17 @@
+{
+  "name": "Poodle Coach & Care Premium",
+  "short_name": "PoodleCoach",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f6f3ef",
+  "theme_color": "#8b5f4d",
+  "description": "Training, care, food, grooming and health tracker for poodles.",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
