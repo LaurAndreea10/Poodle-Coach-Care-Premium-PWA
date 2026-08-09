@@ -6,16 +6,17 @@
   <meta name="theme-color" content="#8b5f4d">
   <meta name="description" content="Poodle Coach & Care Premium — training, health, food, grooming and care tracker.">
   <link rel="manifest" href="manifest.json">
-  <link rel="icon" href="icon-192.png?v=7" type="image/png">
-  <link rel="apple-touch-icon" href="icon-192.png?v=7">
+  <link rel="icon" href="icon-192.png?v=8" type="image/png">
+  <link rel="apple-touch-icon" href="icon-192.png?v=8">
   <title>Poodle Coach & Care Premium</title>
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=8">
+  <style>.brand-mark,.big-poodle,.ob-mark{overflow:hidden}.brand-mark img,.big-poodle img,.ob-mark img{width:100%;height:100%;object-fit:cover;display:block}</style>
 </head>
 <body>
   <div class="app">
     <aside class="sidebar" id="sidebar">
       <div class="brand">
-        <div class="brand-mark"><img src="poodle-logo.png?v=7" alt="Poodle Coach"></div>
+        <div class="brand-mark"><img src="poodle-logo.png?v=8" alt="Poodle Coach"></div>
         <div><strong>Poodle Coach</strong><span>Care Premium</span></div>
       </div>
 
@@ -58,7 +59,6 @@
       </header>
 
       <div class="content">
-        <!-- HOME -->
         <section class="page active" id="page-home">
           <div class="hero">
             <div>
@@ -87,281 +87,84 @@
           </div>
 
           <div class="grid two">
-            <article class="panel">
-              <div class="panel-head"><div><span class="eyebrow">Central Calendar</span><h3 data-i18n="home.next">Următoarele activități</h3></div><button class="tiny-btn" data-go="calendar">30 zile</button></div>
-              <div id="homeTimeline" class="timeline"></div>
-            </article>
-            <article class="panel">
-              <div class="panel-head"><div><span class="eyebrow">Adaptive Plan</span><h3 data-i18n="home.plan">Planul zilei</h3></div><span id="planMinutes" class="chip">15 min</span></div>
-              <div id="adaptivePlan" class="check-list"></div>
-            </article>
+            <article class="panel"><div class="panel-head"><div><span class="eyebrow">Central Calendar</span><h3 data-i18n="home.next">Următoarele activități</h3></div><button class="tiny-btn" data-go="calendar">30 zile</button></div><div id="homeTimeline" class="timeline"></div></article>
+            <article class="panel"><div class="panel-head"><div><span class="eyebrow">Adaptive Plan</span><h3 data-i18n="home.plan">Planul zilei</h3></div><span id="planMinutes" class="chip">15 min</span></div><div id="adaptivePlan" class="check-list"></div></article>
           </div>
 
           <div class="grid two">
-            <article class="panel">
-              <div class="panel-head"><div><span class="eyebrow">Weekly Dashboard</span><h3 data-i18n="home.week">Ultimele 7 zile</h3></div></div>
-              <canvas id="weeklyChart" width="800" height="280"></canvas>
-            </article>
-            <article class="panel">
-              <div class="panel-head"><div><span class="eyebrow">Quick Actions</span><h3 data-i18n="home.quick">Adaugă rapid</h3></div></div>
-              <div class="quick-grid">
-                <button data-quick="pee">💧 Pipi</button>
-                <button data-quick="poop">💩 Caca</button>
-                <button data-quick="meal">🍗 Masă</button>
-                <button data-quick="walk">🦮 Plimbare</button>
-                <button data-quick="sleep">😴 Somn</button>
-                <button data-quick="medicine">💊 Medicament</button>
-              </div>
-            </article>
+            <article class="panel"><div class="panel-head"><div><span class="eyebrow">Weekly Dashboard</span><h3 data-i18n="home.week">Ultimele 7 zile</h3></div></div><canvas id="weeklyChart" width="800" height="280"></canvas></article>
+            <article class="panel"><div class="panel-head"><div><span class="eyebrow">Quick Actions</span><h3 data-i18n="home.quick">Adaugă rapid</h3></div></div><div class="quick-grid"><button data-quick="pee">💧 Pipi</button><button data-quick="poop">💩 Caca</button><button data-quick="meal">🍗 Masă</button><button data-quick="walk">🦮 Plimbare</button><button data-quick="sleep">😴 Somn</button><button data-quick="medicine">💊 Medicament</button></div></article>
           </div>
         </section>
 
-        <!-- TODAY -->
         <section class="page" id="page-today">
           <div class="section-head"><div><span class="eyebrow">Daily Care</span><h2 data-i18n="today.title">Astăzi</h2><p id="todayDate"></p></div><button class="primary-btn" id="completeDayBtn">✓ Încheie ziua</button></div>
-          <div class="grid two">
-            <article class="panel"><div class="panel-head"><h3 data-i18n="today.timeline">Calendarul zilei</h3><button class="tiny-btn" id="addEventBtn">+ Event</button></div><div id="todayTimeline" class="timeline"></div></article>
-            <article class="panel"><div class="panel-head"><h3 data-i18n="today.adaptive">Program adaptiv</h3><span class="chip" id="ageBadge">Puppy</span></div><div id="todayAdaptive" class="check-list"></div></article>
-          </div>
+          <div class="grid two"><article class="panel"><div class="panel-head"><h3 data-i18n="today.timeline">Calendarul zilei</h3><button class="tiny-btn" id="addEventBtn">+ Event</button></div><div id="todayTimeline" class="timeline"></div></article><article class="panel"><div class="panel-head"><h3 data-i18n="today.adaptive">Program adaptiv</h3><span class="chip" id="ageBadge">Puppy</span></div><div id="todayAdaptive" class="check-list"></div></article></div>
         </section>
 
-        <!-- CALENDAR -->
         <section class="page" id="page-calendar">
           <div class="section-head"><div><span class="eyebrow">30 Day Planner</span><h2 data-i18n="calendar.title">Calendar central</h2></div><button class="primary-btn" id="calendarAddBtn">+ Activitate</button></div>
-          <div class="calendar-toolbar"><button id="calPrev">←</button><strong id="calLabel"></strong><button id="calNext">→</button></div>
-          <div id="calendarGrid" class="calendar-grid"></div>
-          <article class="panel"><div class="panel-head"><h3 data-i18n="calendar.upcoming">Următoarele 30 zile</h3></div><div id="upcomingList" class="timeline"></div></article>
+          <div class="calendar-toolbar"><button id="calPrev">←</button><strong id="calLabel"></strong><button id="calNext">→</button></div><div id="calendarGrid" class="calendar-grid"></div><article class="panel"><div class="panel-head"><h3 data-i18n="calendar.upcoming">Următoarele 30 zile</h3></div><div id="upcomingList" class="timeline"></div></article>
         </section>
 
-        <!-- TRAINING -->
         <section class="page" id="page-training">
           <div class="section-head"><div><span class="eyebrow">Skill Academy</span><h2 data-i18n="training.title">Dresaj & abilități</h2><p data-i18n="training.subtitle">Fiecare abilitate are progres separat.</p></div><button class="secondary-btn" id="emergencyBtn">🚨 Emergency Commands</button></div>
-          <div class="filter-row" id="skillFilters">
-            <button class="active" data-filter="all">Toate</button><button data-filter="essential">Esențiale</button><button data-filter="daily">Daily</button><button data-filter="grooming">Grooming</button><button data-filter="trick">Trucuri</button>
-          </div>
-          <div id="skillsGrid" class="cards-grid"></div>
+          <div class="filter-row" id="skillFilters"><button class="active" data-filter="all">Toate</button><button data-filter="essential">Esențiale</button><button data-filter="daily">Daily</button><button data-filter="grooming">Grooming</button><button data-filter="trick">Trucuri</button></div><div id="skillsGrid" class="cards-grid"></div>
         </section>
 
-        <!-- TOILET -->
         <section class="page" id="page-toilet">
           <div class="section-head"><div><span class="eyebrow">Toilet Tracker</span><h2 data-i18n="toilet.title">Toaletă</h2><p data-i18n="toilet.subtitle">Pipi, caca, accidente și intervale.</p></div><button class="primary-btn" id="toiletAddBtn">+ Înregistrare</button></div>
-          <div class="stats-grid four">
-            <article class="stat"><span>💧</span><small>Pipi azi</small><strong id="peeToday">0</strong></article>
-            <article class="stat"><span>💩</span><small>Caca azi</small><strong id="poopToday">0</strong></article>
-            <article class="stat"><span>⚠️</span><small>Accidente</small><strong id="accidentToday">0</strong></article>
-            <article class="stat"><span>⏱️</span><small>Ultimul pipi</small><strong id="lastPee">—</strong></article>
-          </div>
-          <div class="grid two">
-            <article class="panel"><div class="panel-head"><h3>Jurnal toaletă</h3></div><div id="toiletList" class="timeline"></div></article>
-            <article class="panel"><div class="panel-head"><h3>Pattern 7 zile</h3></div><canvas id="toiletChart" width="800" height="280"></canvas></article>
-          </div>
+          <div class="stats-grid four"><article class="stat"><span>💧</span><small>Pipi azi</small><strong id="peeToday">0</strong></article><article class="stat"><span>💩</span><small>Caca azi</small><strong id="poopToday">0</strong></article><article class="stat"><span>⚠️</span><small>Accidente</small><strong id="accidentToday">0</strong></article><article class="stat"><span>⏱️</span><small>Ultimul pipi</small><strong id="lastPee">—</strong></article></div>
+          <div class="grid two"><article class="panel"><div class="panel-head"><h3>Jurnal toaletă</h3></div><div id="toiletList" class="timeline"></div></article><article class="panel"><div class="panel-head"><h3>Pattern 7 zile</h3></div><canvas id="toiletChart" width="800" height="280"></canvas></article></div>
         </section>
 
-        <!-- FOOD -->
         <section class="page" id="page-food">
           <div class="section-head"><div><span class="eyebrow">Meal Tracker</span><h2 data-i18n="food.title">Mâncare & apă</h2></div><button class="primary-btn" id="mealAddBtn">+ Masă</button></div>
-          <div class="stats-grid four">
-            <article class="stat"><span>🍽️</span><small>Mese azi</small><strong id="mealsToday">0/3</strong></article>
-            <article class="stat"><span>🥣</span><small>Hrană</small><strong id="gramsToday">0g</strong></article>
-            <article class="stat"><span>💧</span><small>Apă</small><strong id="waterToday">0ml</strong></article>
-            <article class="stat"><span>⚖️</span><small>Greutate</small><strong id="weightToday">2.5kg</strong></article>
-          </div>
-          <div class="grid two">
-            <article class="panel"><div class="panel-head"><h3>Meal Timeline</h3><button class="tiny-btn" id="waterBtn">+50ml apă</button></div><div id="mealList" class="timeline"></div></article>
-            <article class="panel"><div class="panel-head"><h3>Greutate</h3><button class="tiny-btn" id="weightBtn">+ Cântărire</button></div><canvas id="weightChart" width="800" height="280"></canvas></article>
-          </div>
+          <div class="stats-grid four"><article class="stat"><span>🍽️</span><small>Mese azi</small><strong id="mealsToday">0/3</strong></article><article class="stat"><span>🥣</span><small>Hrană</small><strong id="gramsToday">0g</strong></article><article class="stat"><span>💧</span><small>Apă</small><strong id="waterToday">0ml</strong></article><article class="stat"><span>⚖️</span><small>Greutate</small><strong id="weightToday">2.5kg</strong></article></div>
+          <div class="grid two"><article class="panel"><div class="panel-head"><h3>Meal Timeline</h3><button class="tiny-btn" id="waterBtn">+50ml apă</button></div><div id="mealList" class="timeline"></div></article><article class="panel"><div class="panel-head"><h3>Greutate</h3><button class="tiny-btn" id="weightBtn">+ Cântărire</button></div><canvas id="weightChart" width="800" height="280"></canvas></article></div>
           <article class="panel"><div class="panel-head"><h3>Profil hrană</h3></div><div class="form-grid"><label>Brand<input id="foodBrand"></label><label>Tip<input id="foodType"></label><label>Mese/zi<input id="mealsPerDay" type="number" min="1" max="6"></label></div><button class="primary-btn" id="saveFoodBtn">Salvează</button></article>
         </section>
 
-        <!-- WALK -->
         <section class="page" id="page-walk">
           <div class="section-head"><div><span class="eyebrow">Walking Mode</span><h2 data-i18n="walk.title">Plimbare</h2></div><button class="primary-btn" id="startWalkBtn">▶ Start Walking Mode</button></div>
-          <div class="walk-hero"><div><small>Durată</small><strong id="walkTimer">00:00</strong></div><div><small>Loose leash</small><strong id="looseLeashCount">0</strong></div><div><small>Recall</small><strong id="walkRecallCount">0</strong></div><div><small>Distrageri</small><strong id="distractionCount">0</strong></div></div>
-          <div class="walk-actions"><button data-walk-action="loose">✅ Lesă relaxată</button><button data-walk-action="recall">🎯 Recall</button><button data-walk-action="distraction">👀 Distragere</button><button data-walk-action="pee">💧 Pipi</button><button data-walk-action="poop">💩 Caca</button></div>
-          <article class="panel"><div class="panel-head"><h3>Istoric plimbări</h3></div><div id="walkHistory" class="timeline"></div></article>
+          <div class="walk-hero"><div><small>Durată</small><strong id="walkTimer">00:00</strong></div><div><small>Loose leash</small><strong id="looseLeashCount">0</strong></div><div><small>Recall</small><strong id="walkRecallCount">0</strong></div><div><small>Distrageri</small><strong id="distractionCount">0</strong></div></div><div class="walk-actions"><button data-walk-action="loose">✅ Lesă relaxată</button><button data-walk-action="recall">🎯 Recall</button><button data-walk-action="distraction">👀 Distragere</button><button data-walk-action="pee">💧 Pipi</button><button data-walk-action="poop">💩 Caca</button></div><article class="panel"><div class="panel-head"><h3>Istoric plimbări</h3></div><div id="walkHistory" class="timeline"></div></article>
         </section>
 
-        <!-- SOCIAL -->
-        <section class="page" id="page-social">
-          <div class="section-head"><div><span class="eyebrow">Socialization Checklist</span><h2 data-i18n="social.title">Socializare</h2><p>Marchează experiențele calme și pozitive.</p></div></div>
-          <div id="socialGrid" class="check-grid"></div>
-        </section>
+        <section class="page" id="page-social"><div class="section-head"><div><span class="eyebrow">Socialization Checklist</span><h2 data-i18n="social.title">Socializare</h2><p>Marchează experiențele calme și pozitive.</p></div></div><div id="socialGrid" class="check-grid"></div></section>
 
-        <!-- ALONE -->
-        <section class="page" id="page-alone">
-          <div class="section-head"><div><span class="eyebrow">Alone Home Program</span><h2 data-i18n="alone.title">Singur acasă</h2><p>Creștere graduală a toleranței la separare.</p></div><button class="primary-btn" id="startAloneBtn">▶ Start sesiune</button></div>
-          <div class="alone-progress"><div><small>Nivel curent</small><strong id="aloneLevel">1</strong></div><div><small>Țintă</small><strong id="aloneTarget">30 sec</strong></div><div><small>Sesiuni reușite</small><strong id="aloneSuccess">0</strong></div></div>
-          <div id="aloneSteps" class="step-ladder"></div>
-          <article class="panel"><div class="panel-head"><h3>Istoric</h3></div><div id="aloneHistory" class="timeline"></div></article>
-        </section>
+        <section class="page" id="page-alone"><div class="section-head"><div><span class="eyebrow">Alone Home Program</span><h2 data-i18n="alone.title">Singur acasă</h2><p>Creștere graduală a toleranței la separare.</p></div><button class="primary-btn" id="startAloneBtn">▶ Start sesiune</button></div><div class="alone-progress"><div><small>Nivel curent</small><strong id="aloneLevel">1</strong></div><div><small>Țintă</small><strong id="aloneTarget">30 sec</strong></div><div><small>Sesiuni reușite</small><strong id="aloneSuccess">0</strong></div></div><div id="aloneSteps" class="step-ladder"></div><article class="panel"><div class="panel-head"><h3>Istoric</h3></div><div id="aloneHistory" class="timeline"></div></article></section>
 
-        <!-- GROOMING -->
-        <section class="page" id="page-grooming">
-          <div class="section-head"><div><span class="eyebrow">Grooming Tracker</span><h2 data-i18n="grooming.title">Grooming</h2></div><button class="primary-btn" id="groomingAddBtn">+ Programare</button></div>
-          <div id="groomingCards" class="stats-grid four"></div>
-          <div class="grid two">
-            <article class="panel"><div class="panel-head"><h3>Rutina de îngrijire</h3></div><div id="groomingRoutine" class="check-list"></div></article>
-            <article class="panel"><div class="panel-head"><h3>Programări & istoric</h3></div><div id="groomingTimeline" class="timeline"></div></article>
-          </div>
-        </section>
+        <section class="page" id="page-grooming"><div class="section-head"><div><span class="eyebrow">Grooming Tracker</span><h2 data-i18n="grooming.title">Grooming</h2></div><button class="primary-btn" id="groomingAddBtn">+ Programare</button></div><div id="groomingCards" class="stats-grid four"></div><div class="grid two"><article class="panel"><div class="panel-head"><h3>Rutina de îngrijire</h3></div><div id="groomingRoutine" class="check-list"></div></article><article class="panel"><div class="panel-head"><h3>Programări & istoric</h3></div><div id="groomingTimeline" class="timeline"></div></article></div></section>
 
-        <!-- VET -->
-        <section class="page" id="page-vet">
-          <div class="section-head"><div><span class="eyebrow">Vaccine & Health Tracker</span><h2 data-i18n="vet.title">Veterinar</h2></div><button class="primary-btn" id="vetVisitBtn">+ Vizită</button></div>
-          <div class="stats-grid four">
-            <article class="stat"><span>💉</span><small>Vaccinuri</small><strong id="vaccineCount">0</strong></article>
-            <article class="stat"><span>💊</span><small>Medicamente</small><strong id="medicineCount">0</strong></article>
-            <article class="stat"><span>🦠</span><small>Deparazitări</small><strong id="dewormCount">0</strong></article>
-            <article class="stat"><span>🩺</span><small>Vizite</small><strong id="visitCount">0</strong></article>
-          </div>
-          <div class="grid two">
-            <article class="panel"><div class="panel-head"><h3>Vaccination Passport</h3><button class="tiny-btn" id="vaccineAddBtn">+ Vaccin</button></div><div id="vaccineList" class="timeline"></div></article>
-            <article class="panel"><div class="panel-head"><h3>Medicamente & tratamente</h3><button class="tiny-btn" id="medicineAddBtn">+ Medicament</button></div><div id="medicineList" class="timeline"></div></article>
-          </div>
-          <article class="panel"><div class="panel-head"><h3>Istoric veterinar</h3></div><div id="vetTimeline" class="timeline"></div></article>
-        </section>
+        <section class="page" id="page-vet"><div class="section-head"><div><span class="eyebrow">Vaccine & Health Tracker</span><h2 data-i18n="vet.title">Veterinar</h2></div><button class="primary-btn" id="vetVisitBtn">+ Vizită</button></div><div class="stats-grid four"><article class="stat"><span>💉</span><small>Vaccinuri</small><strong id="vaccineCount">0</strong></article><article class="stat"><span>💊</span><small>Medicamente</small><strong id="medicineCount">0</strong></article><article class="stat"><span>🦠</span><small>Deparazitări</small><strong id="dewormCount">0</strong></article><article class="stat"><span>🩺</span><small>Vizite</small><strong id="visitCount">0</strong></article></div><div class="grid two"><article class="panel"><div class="panel-head"><h3>Vaccination Passport</h3><button class="tiny-btn" id="vaccineAddBtn">+ Vaccin</button></div><div id="vaccineList" class="timeline"></div></article><article class="panel"><div class="panel-head"><h3>Medicamente & tratamente</h3><button class="tiny-btn" id="medicineAddBtn">+ Medicament</button></div><div id="medicineList" class="timeline"></div></article></div><article class="panel"><div class="panel-head"><h3>Istoric veterinar</h3></div><div id="vetTimeline" class="timeline"></div></article></section>
 
-        <!-- JOURNAL -->
-        <section class="page" id="page-journal">
-          <div class="section-head"><div><span class="eyebrow">Daily Journal</span><h2 data-i18n="journal.title">Jurnal zilnic</h2></div><button class="primary-btn" id="saveJournalBtn">Salvează ziua</button></div>
-          <div class="journal-grid">
-            <label>Stare<select id="journalMood"><option>😊 Fericit</option><option>😌 Calm</option><option>🤩 Jucăuș</option><option>😴 Obosit</option><option>😟 Neliniștit</option></select></label>
-            <label>Apetit<select id="journalAppetite"><option>Bun</option><option>Mediu</option><option>Scăzut</option></select></label>
-            <label>Somn (ore)<input id="journalSleep" type="number" step=".5" min="0" max="24"></label>
-            <label>Energie 1–5<input id="journalEnergy" type="range" min="1" max="5" value="4"></label>
-          </div>
-          <label class="block-label">Observații<textarea id="journalNotes" rows="6" placeholder="Ce a mers bine? Ce s-a schimbat?"></textarea></label>
-          <article class="panel"><div class="panel-head"><h3>Ultimele înregistrări</h3></div><div id="journalHistory" class="timeline"></div></article>
-        </section>
+        <section class="page" id="page-journal"><div class="section-head"><div><span class="eyebrow">Daily Journal</span><h2 data-i18n="journal.title">Jurnal zilnic</h2></div><button class="primary-btn" id="saveJournalBtn">Salvează ziua</button></div><div class="journal-grid"><label>Stare<select id="journalMood"><option>😊 Fericit</option><option>😌 Calm</option><option>🤩 Jucăuș</option><option>😴 Obosit</option><option>😟 Neliniștit</option></select></label><label>Apetit<select id="journalAppetite"><option>Bun</option><option>Mediu</option><option>Scăzut</option></select></label><label>Somn (ore)<input id="journalSleep" type="number" step=".5" min="0" max="24"></label><label>Energie 1–5<input id="journalEnergy" type="range" min="1" max="5" value="4"></label></div><label class="block-label">Observații<textarea id="journalNotes" rows="6" placeholder="Ce a mers bine? Ce s-a schimbat?"></textarea></label><article class="panel"><div class="panel-head"><h3>Ultimele înregistrări</h3></div><div id="journalHistory" class="timeline"></div></article></section>
 
-        <!-- PROGRESS -->
-        <section class="page" id="page-progress">
-          <div class="section-head"><div><span class="eyebrow">Analytics</span><h2 data-i18n="progress.title">Dashboard săptămânal</h2></div></div>
-          <div class="stats-grid four">
-            <article class="stat"><span>⭐</span><small>XP total</small><strong id="progressXp">0</strong></article>
-            <article class="stat"><span>🎓</span><small>Sesiuni</small><strong id="progressSessions">0</strong></article>
-            <article class="stat"><span>🧠</span><small>Skill mastery</small><strong id="progressMastery">0%</strong></article>
-            <article class="stat"><span>❤️</span><small>Care score mediu</small><strong id="progressCare">0</strong></article>
-          </div>
-          <div class="grid two">
-            <article class="panel"><div class="panel-head"><h3>Care activity</h3></div><canvas id="careChart" width="800" height="280"></canvas></article>
-            <article class="panel"><div class="panel-head"><h3>Skill levels</h3></div><div id="skillProgressList" class="skill-progress-list"></div></article>
-          </div>
-        </section>
+        <section class="page" id="page-progress"><div class="section-head"><div><span class="eyebrow">Analytics</span><h2 data-i18n="progress.title">Dashboard săptămânal</h2></div></div><div class="stats-grid four"><article class="stat"><span>⭐</span><small>XP total</small><strong id="progressXp">0</strong></article><article class="stat"><span>🎓</span><small>Sesiuni</small><strong id="progressSessions">0</strong></article><article class="stat"><span>🧠</span><small>Skill mastery</small><strong id="progressMastery">0%</strong></article><article class="stat"><span>❤️</span><small>Care score mediu</small><strong id="progressCare">0</strong></article></div><div class="grid two"><article class="panel"><div class="panel-head"><h3>Care activity</h3></div><canvas id="careChart" width="800" height="280"></canvas></article><article class="panel"><div class="panel-head"><h3>Skill levels</h3></div><div id="skillProgressList" class="skill-progress-list"></div></article></div></section>
 
-        <!-- DOCUMENTS -->
-        <section class="page" id="page-documents">
-          <div class="section-head"><div><span class="eyebrow">Pet Documents</span><h2 data-i18n="documents.title">Documente</h2><p>Vaccination passport, pedigree, analize, rețete și alte documente.</p></div><button class="primary-btn" id="docAddBtn">+ Document</button></div>
-          <div id="documentsGrid" class="documents-grid"></div>
-        </section>
+        <section class="page" id="page-documents"><div class="section-head"><div><span class="eyebrow">Pet Documents</span><h2 data-i18n="documents.title">Documente</h2><p>Vaccination passport, pedigree, analize, rețete și alte documente.</p></div><button class="primary-btn" id="docAddBtn">+ Document</button></div><div id="documentsGrid" class="documents-grid"></div></section>
 
-        <!-- PROFILE -->
-        <section class="page" id="page-profile">
-          <div class="section-head"><div><span class="eyebrow">Pet Profile</span><h2 data-i18n="profile.title">Profil</h2></div></div>
-          <div class="profile-grid">
-            <article class="profile-card"><div class="big-poodle"><img src="poodle-logo.png?v=7" alt="" aria-hidden="true"></div><h3 id="profileName">Kygo</h3><p id="profileMeta">Poodle Toy</p><span class="chip">Premium Pup</span></article>
-            <article class="panel">
-              <div class="form-grid">
-                <label>Nume<input id="profileNameInput"></label>
-                <label>Rasă<select id="profileBreedInput"><option>Poodle Toy</option><option>Poodle Miniature</option><option>Poodle Toy / Miniature</option></select></label>
-                <label>Sex<select id="profileSexInput"><option>Mascul</option><option>Femelă</option></select></label>
-                <label>Vârstă (luni)<input id="profileAgeInput" type="number" min="1" max="240"></label>
-                <label>Greutate (kg)<input id="profileWeightInput" type="number" step=".1" min=".5"></label>
-                <label>Nivel energie<select id="profileEnergyInput"><option value="calm">Calm</option><option value="medium">Mediu</option><option value="high">Ridicat</option></select></label>
-              </div>
-              <button class="primary-btn" id="saveProfileBtn">Salvează profilul</button>
-            </article>
-          </div>
-        </section>
+        <section class="page" id="page-profile"><div class="section-head"><div><span class="eyebrow">Pet Profile</span><h2 data-i18n="profile.title">Profil</h2></div></div><div class="profile-grid"><article class="profile-card"><div class="big-poodle"><img src="poodle-logo.png?v=8" alt="" aria-hidden="true"></div><h3 id="profileName">Kygo</h3><p id="profileMeta">Poodle Toy</p><span class="chip">Premium Pup</span></article><article class="panel"><div class="form-grid"><label>Nume<input id="profileNameInput"></label><label>Rasă<select id="profileBreedInput"><option>Poodle Toy</option><option>Poodle Miniature</option><option>Poodle Toy / Miniature</option></select></label><label>Sex<select id="profileSexInput"><option>Mascul</option><option>Femelă</option></select></label><label>Vârstă (luni)<input id="profileAgeInput" type="number" min="1" max="240"></label><label>Greutate (kg)<input id="profileWeightInput" type="number" step=".1" min=".5"></label><label>Nivel energie<select id="profileEnergyInput"><option value="calm">Calm</option><option value="medium">Mediu</option><option value="high">Ridicat</option></select></label></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="primary-btn" id="saveProfileBtn">Salvează profilul</button><button class="secondary-btn" id="retakeTutorialBtn">🎓 Tutorial</button></div></article></div></section>
       </div>
     </main>
   </div>
 
-  <!-- UNIVERSAL MODAL -->
-  <div class="modal" id="modal">
-    <div class="modal-card">
-      <button class="modal-close" id="modalClose">×</button>
-      <div id="modalContent"></div>
-    </div>
-  </div>
+  <div class="modal" id="modal"><div class="modal-card"><button class="modal-close" id="modalClose">×</button><div id="modalContent"></div></div></div>
+  <div class="modal" id="aiModal"><div class="modal-card"><button class="modal-close" data-close="aiModal">×</button><span class="eyebrow">AI Coach</span><h2>✨ Poodle Coach AI</h2><div id="aiSuggestions" class="ai-suggestions"></div><div class="ai-box"><input id="aiInput" placeholder="Ex: nu vine când îl chem"><button class="primary-btn" id="askAiBtn">Întreabă</button></div><p class="fineprint">AI Coach oferă ghidare generală pentru dresaj și rutină; pentru probleme medicale folosește medicul veterinar.</p></div></div>
 
-  <!-- AI COACH -->
-  <div class="modal" id="aiModal">
-    <div class="modal-card">
-      <button class="modal-close" data-close="aiModal">×</button>
-      <span class="eyebrow">AI Coach</span>
-      <h2>✨ Poodle Coach AI</h2>
-      <div id="aiSuggestions" class="ai-suggestions"></div>
-      <div class="ai-box">
-        <input id="aiInput" placeholder="Ex: nu vine când îl chem">
-        <button class="primary-btn" id="askAiBtn">Întreabă</button>
-      </div>
-      <p class="fineprint">AI Coach oferă ghidare generală pentru dresaj și rutină; pentru probleme medicale folosește medicul veterinar.</p>
-    </div>
-  </div>
-
-  <!-- ONBOARDING -->
-  <div class="onboarding" id="onboarding" aria-modal="true" role="dialog">
+  <div id="onboarding" class="onboarding" aria-hidden="true">
     <div class="ob-card">
       <div class="ob-progress" id="obProgress"><i class="on"></i><i></i><i></i><i></i></div>
-
-      <!-- Step 1: Language -->
-      <div class="ob-step active" data-ob-step="0">
-        <div class="ob-mark"><img src="poodle-logo.png?v=7" alt="Poodle Coach"></div>
-        <h2>Choose your language</h2>
-        <p class="ob-sub">Alege limba în care vrei să folosești aplicația.</p>
-        <div class="ob-langs">
-          <button class="ob-lang sel" data-ob-lang="ro"><span>🇷🇴</span> Română</button>
-          <button class="ob-lang" data-ob-lang="en"><span>🇬🇧</span> English</button>
-        </div>
-      </div>
-
-      <!-- Step 2: Dog name -->
-      <div class="ob-step" data-ob-step="1">
-        <div class="ob-mark">🐾</div>
-        <h2 data-i18n="ob.nameTitle">Cum îl cheamă pe cățel?</h2>
-        <p class="ob-sub" data-i18n="ob.nameSub">Numele apare în app și în comenzile de dresaj.</p>
-        <label class="ob-field">
-          <span data-i18n="ob.nameLabel">Numele cățelului</span>
-          <input id="obName" type="text" placeholder="ex. Kygo" maxlength="30" autocomplete="off">
-        </label>
-        <div class="ob-suggest"><button data-name-suggest="Kygo">Kygo</button><button data-name-suggest="Kiko">Kiko</button><button data-name-suggest="Kito">Kito</button></div>
-      </div>
-
-      <!-- Step 3: Details -->
-      <div class="ob-step" data-ob-step="2">
-        <div class="ob-mark">🐩</div>
-        <h2 data-i18n="ob.detailTitle">Câteva detalii (opțional)</h2>
-        <p class="ob-sub" data-i18n="ob.detailSub">Le poți schimba oricând din Profil.</p>
-        <div class="ob-grid">
-          <label class="ob-field"><span data-i18n="ob.breedLabel">Rasă</span><select id="obBreed"><option>Poodle Toy</option><option>Poodle Miniature</option><option>Poodle Toy / Miniature</option></select></label>
-          <label class="ob-field"><span data-i18n="ob.sexLabel">Sex</span><select id="obSex"><option value="Mascul">Mascul</option><option value="Femelă">Femelă</option></select></label>
-          <label class="ob-field"><span data-i18n="ob.ageLabel">Vârstă (luni)</span><input id="obAge" type="number" min="1" max="240" value="3"></label>
-          <label class="ob-field"><span data-i18n="ob.weightLabel">Greutate (kg)</span><input id="obWeight" type="number" min="0.5" max="30" step="0.1" value="2.5"></label>
-        </div>
-      </div>
-
-      <!-- Step 4: Ready -->
-      <div class="ob-step" data-ob-step="3">
-        <div class="ob-mark">🎉</div>
-        <h2 id="obReadyTitle">Totul e gata!</h2>
-        <p class="ob-sub" id="obReadySub">Planul zilnic va fi adaptat vârstei și profilului.</p>
-        <div class="care-score-card" style="margin:10px auto;max-width:280px">
-          <div class="score-ring" style="width:100px;height:100px"><span>🐩</span></div>
-          <strong id="obSummaryName">Kygo</strong>
-          <span id="obSummaryMeta">Poodle Toy · 3 luni</span>
-        </div>
-      </div>
-
-      <div class="ob-actions">
-        <button class="secondary-btn" id="obBack" style="visibility:hidden">←</button>
-        <button class="primary-btn" id="obNext">Continuă →</button>
-      </div>
-      <button class="ob-skip" id="obSkip" data-i18n="ob.skip">Sari peste</button>
+      <section class="ob-step active" data-ob-step="0"><div class="ob-mark"><img src="poodle-logo.png?v=8" alt="Poodle Coach"></div><h2>Choose your language</h2><p class="ob-sub">Alege limba în care vrei să folosești aplicația.</p><div class="ob-langs"><button class="ob-lang sel" data-ob-lang="ro"><span>🇷🇴</span> Română</button><button class="ob-lang" data-ob-lang="en"><span>🇬🇧</span> English</button></div></section>
+      <section class="ob-step" data-ob-step="1"><div class="ob-mark">🐾</div><h2 data-i18n="ob.nameTitle">Cum îl cheamă pe cățel?</h2><p class="ob-sub" data-i18n="ob.nameSub">Numele apare în app și în comenzile de dresaj.</p><label class="ob-field"><span data-i18n="ob.nameLabel">Numele cățelului</span><input id="obName" type="text" placeholder="ex. Kygo" maxlength="30" autocomplete="off"></label><div class="ob-suggest"><button data-name-suggest="Kygo">Kygo</button><button data-name-suggest="Kiko">Kiko</button><button data-name-suggest="Kito">Kito</button></div></section>
+      <section class="ob-step" data-ob-step="2"><div class="ob-mark">🐩</div><h2 data-i18n="ob.detailTitle">Câteva detalii (opțional)</h2><p class="ob-sub" data-i18n="ob.detailSub">Le poți schimba oricând din Profil.</p><div class="ob-grid"><label class="ob-field"><span data-i18n="ob.breedLabel">Rasă</span><select id="obBreed"><option>Poodle Toy</option><option>Poodle Miniature</option><option>Poodle Toy / Miniature</option></select></label><label class="ob-field"><span data-i18n="ob.sexLabel">Sex</span><select id="obSex"><option value="Mascul">Mascul</option><option value="Femelă">Femelă</option></select></label><label class="ob-field"><span data-i18n="ob.ageLabel">Vârstă (luni)</span><input id="obAge" type="number" min="1" max="240" value="3"></label><label class="ob-field"><span data-i18n="ob.weightLabel">Greutate (kg)</span><input id="obWeight" type="number" min="0.5" max="30" step="0.1" value="2.5"></label></div></section>
+      <section class="ob-step" data-ob-step="3"><div class="ob-mark">🎉</div><h2 id="obReadyTitle">Totul e gata!</h2><p class="ob-sub" id="obReadySub">Planul zilnic va fi adaptat vârstei și profilului.</p><div class="care-score-card" style="margin:10px auto;max-width:280px"><div class="score-ring" style="width:100px;height:100px"><span>🐩</span></div><strong id="obSummaryName">Kygo</strong><span id="obSummaryMeta">Poodle Toy · 3 luni</span></div></section>
+      <div class="ob-actions"><button class="secondary-btn" id="obBack" style="visibility:hidden">←</button><button class="primary-btn" id="obNext">Continuă →</button></div><button class="ob-skip" id="obSkip">Sari peste</button>
     </div>
   </div>
 
   <div id="toast" class="toast"></div>
-  <script src="script.js?v=7"></script>
+  <script src="script.js?v=8"></script>
+  <script src="onboarding.js?v=8"></script>
 </body>
 </html>
