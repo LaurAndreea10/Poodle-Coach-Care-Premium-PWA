@@ -16,6 +16,11 @@ nav.appendChild(button);
 const page=document.createElement("section");page.className="page";page.id="page-premium";
 page.innerHTML=`
 <div class="section-head"><div><span class="eyebrow">V13 COMPLETE CARE SUITE</span><h2>Premium Hub</h2><p>Dezvoltare, comportament, siguranță, familie și organizare — salvate local și disponibile offline.</p></div><button class="primary-btn" id="v13Quick">＋ Adaugă rapid</button></div>
+<div class="panel v13-identity" aria-label="Personalizare profil">
+<label><span>🐩 Numele cățelului</span><input id="v13DogName" maxlength="30" autocomplete="off" aria-label="Numele cățelului"></label>
+<label><span>🌐 Limba aplicației</span><select id="v13Language" aria-label="Limba aplicației"><option value="ro">🇷🇴 Română</option><option value="en">🇬🇧 English</option></select></label>
+<button class="primary-btn" id="v13SaveIdentity">Salvează preferințele</button>
+</div>
 <div class="v13-tabs" role="tablist" aria-label="Module Premium">
 <button class="active" data-v13="overview">Panou</button><button data-v13="growth">Dezvoltare</button><button data-v13="symptoms">Simptome</button><button data-v13="behavior">Comportament</button><button data-v13="memories">Amintiri</button><button data-v13="inventory">Inventar</button><button data-v13="travel">Călătorii</button><button data-v13="family">Familie</button><button data-v13="safety">Urgențe</button><button data-v13="data">Date</button><button data-v13="settings">Setări</button>
 </div><div id="v13View" aria-live="polite"></div>`;
@@ -96,6 +101,29 @@ function render(name){(routes[name]||overview)()}
 function go(name){current=name;document.querySelectorAll("[data-v13]").forEach(b=>{b.classList.toggle("active",b.dataset.v13===name);b.setAttribute("aria-selected",b.dataset.v13===name)});render(name)}
 document.querySelectorAll("[data-v13]").forEach(b=>b.onclick=()=>go(b.dataset.v13));
 document.getElementById("v13Quick").onclick=()=>go("symptoms");
+const nameControl=document.getElementById("v13DogName");
+const languageControl=document.getElementById("v13Language");
+const syncIdentity=()=>{
+  const profileInput=document.getElementById("profileNameInput");
+  const visibleName=document.getElementById("heroName")?.textContent?.trim();
+  nameControl.value=profileInput?.value||visibleName||"";
+  languageControl.value=(document.getElementById("langBtn")?.textContent||"").includes("EN")?"en":"ro";
+};
+document.getElementById("v13SaveIdentity").onclick=()=>{
+  const profileInput=document.getElementById("profileNameInput");
+  const profileSave=document.getElementById("saveProfileBtn");
+  const nextName=nameControl.value.trim();
+  if(!nextName)return toast("Introdu numele cățelului");
+  if(profileInput&&profileSave){profileInput.value=nextName;profileSave.click()}
+  const langButton=document.getElementById("langBtn");
+  const currentLang=(langButton?.textContent||"").includes("EN")?"en":"ro";
+  if(langButton&&currentLang!==languageControl.value)langButton.click();
+  setTimeout(syncIdentity,0);
+  toast(languageControl.value==="ro"?"Preferințe salvate ✓":"Preferences saved ✓");
+};
+document.getElementById("langBtn")?.addEventListener("click",()=>setTimeout(syncIdentity,0));
+document.getElementById("saveProfileBtn")?.addEventListener("click",()=>setTimeout(syncIdentity,0));
+syncIdentity();
 document.addEventListener("keydown",e=>{if(e.altKey&&e.key.toLowerCase()==="p"){e.preventDefault();button.click()}});
 applySettings();overview();
 })();
