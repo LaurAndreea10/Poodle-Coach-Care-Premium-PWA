@@ -1,4 +1,4 @@
-const CACHE="poodle-coach-v13";
+const CACHE="poodle-coach-v14";
 const ASSETS=["./","index.html","style.css","script.js","onboarding.js","training-premium-v11.js","v9.css","v9-core.js","v9-langs.js","v9-health.js","v9-training.js","v10-training-elements.js","v9-ux.js","manifest.json","icon-192.png","icon-512.png","poodle-logo.png","v13-premium-suite.css","v13-premium-suite.js"];
 self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
